@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <%- include('./partials/head') %>
+  <body>
+    <main>
+      <h1><%= title %></h1>
+      <form action="" method="">
+          <label for="nombre">Ingrese su nombre
+              <input type="text" name="nombre" id="nombre" value="" required>
+          </label>
+
+          <label for="color">Seleccione un color
+              <select name="color" id="color" required>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+                  <option value=""></option>
+              </select>
+          </label>
+
+          <label for="email">Ingrese su email
+              <input type="email" name="email" id="email" value="" required>
+          </label>
+
+          <label for="edad">Ingrese su edad
+              <input type="number" name="edad" id="edad" value="">
+          </label>
+
+          <button type="submit">Enviar</button>
+      </form>
+  </main>
+  </body>
+</html>

@@ -6,3 +6,33 @@ body {
 a {
   color: #00B7FF;
 }
+
+main{
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+main .box-form{
+  box-shadow: 0px 0px 10px rgb(100, 100, 100);
+  border-radius: 10px;
+  width: 60vw;
+  padding: 10px;
+}
+main .box-form form{
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+main .box-form .titulo{
+  text-align: center;
+}
+main .box-form form label{
+  margin: 10px 0;
+}
+main .box-form form small{
+  color: #ff0000;
+  display: block;
+}
+main .box-form form .check{
+  margin: 10px 0;
+}

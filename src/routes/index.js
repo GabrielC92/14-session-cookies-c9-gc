@@ -1,8 +1,11 @@
 var express = require('express');
 var router = express.Router();
-const {home} = require('../controllers/indexController');
+const {home, syc} = require('../controllers/indexController');
+const formValidator = require('../validations/formValidator');
 
 /* GET home page. */
-router.get('/', home);
+router
+    .get('/', home)
+    .post('/', formValidator, syc)
 
 module.exports = router;

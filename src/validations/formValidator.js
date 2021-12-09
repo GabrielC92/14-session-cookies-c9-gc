@@ -3,7 +3,10 @@ const {check} = require('express-validator');
 module.exports = [
     check('nombre')
     .notEmpty().withMessage('Escriba su nombre').bail()
-    .isAlpha().withMessage('Usar solo caracteres alfábeticos'),
+    .isAlpha().withMessage('Usar solo caracteres alfábeticos').bail()
+    .isLength({
+        min: 3
+    }).withMessage('El nombre debe tener un mínimo de 3 caracteres'),
 
     check('color')
     .notEmpty().withMessage('Seleccione un color'),
@@ -13,8 +16,14 @@ module.exports = [
     .isEmail().withMessage('Debe usar un email válido'),
 
     check('edad')
-    .isInt({
-        min: 18,
-        max: 99
+    .custom((value,{req}) => {
+        if (value != "") {
+            if (value >= 18 && value <= 99) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return true;
     }).withMessage('Escriba un número entre 18 y 99')
 ]

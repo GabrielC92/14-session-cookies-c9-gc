@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
+const localsUser = require('./middlewares/localsUser');
+const cookieCheck = require('./middlewares/cookieCheck');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -24,6 +26,12 @@ app.use(session({
   saveUninitialized: true,
   resave: false
 }));
+
+/* Levanta session de cookie */
+app.use(cookieCheck);
+
+/* Envia los datos del usuario logueado al cliente */
+app.use(localsUser);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

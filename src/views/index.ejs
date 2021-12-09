@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <%- include('./partials/head') %>
-  <body>
+  <%- include('./partials/head', {title: "Session y cookies"}) %>
+    <body>
     <main>
-      <h1><%= title %></h1>
-      <form action="" method="POST">
-          <label for="nombre">Ingrese su nombre
-              <input type="text" name="nombre" id="nombre" value="" required>
-          </label>
-
-          <label for="color">Seleccione un color
-              <select name="color" id="color" required>
-                  <option value="red">Rojo</option>
-                  <option value="blue">Azul</option>
-                  <option value="green">Verde</option>
-                  <option value="black">Negro</option>
-              </select>
-          </label>
-
-          <label for="email">Ingrese su email
-              <input type="email" name="email" id="email" value="" required>
-          </label>
-
-          <label for="edad">Ingrese su edad
-              <input type="number" name="edad" id="edad" value="">
-          </label>
-
-          <button type="submit">Enviar</button>
-      </form>
+      <div class="box-form">
+           <form action="" method="POST">
+               <h1 class="titulo">Session y cookies</h1>
+               <label for="nombre">Ingrese su nombre: 
+                   <input type="text" name="nombre" id="nombre" value="<%= locals.old && old.nombre ? old.nombre : null %>">
+                   <small><%= locals.errores && errores.nombre ? errores.nombre.msg : null %></small>
+               </label>
+           
+               <label for="color">Seleccione un color: 
+                   <select name="color" id="color">
+                       <option value="" selected hidden>Elegí tu color</option>
+                       <option value="red">Rojo</option>
+                       <option value="blue">Azul</option>
+                       <option value="green">Verde</option>
+                       <option value="black">Negro</option>
+                   </select>
+                   <small><%= locals.errores && errores.color ? errores.color.msg : null %></small>
+               </label>
+           
+               <label for="email">Ingrese su email: 
+                   <input type="email" name="email" id="email" value="<%= locals.old && old.email ? old.email : null %>">
+                   <small><%= locals.errores && errores.email ? errores.email.msg : null %></small>
+               </label>
+           
+               <label for="edad">Ingrese su edad: 
+                   <input type="number" name="edad" id="edad" value="<%= locals.old && old.edad ? old.edad : null %>">
+                   <small><%= locals.errores && errores.edad ? errores.edad.msg : null %></small>
+               </label>
+ 
+               <div class="check">
+                   <input type="checkbox" name="rec" id="rec">
+                   <label for="rec">Recordar el color</label>
+               </div>
+           
+               <button type="submit">Enviar</button>
+           </form>
+      </div>
   </main>
   </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <%- include('./partials/head', {title: "Session y cookies"}) %>
-    <body>
+    <body <%= colorForm %>>
     <main>
       <div class="box-form">
            <form action="" method="POST">
@@ -28,16 +28,19 @@
                </label>
            
                <label for="edad">Ingrese su edad: 
-                   <input type="number" name="edad" id="edad" value="<%= locals.old && old.edad ? old.edad : null %>">
+                   <input type="text" name="edad" id="edad" value="<%= locals.old && old.edad ? old.edad : null %>">
                    <small><%= locals.errores && errores.edad ? errores.edad.msg : null %></small>
                </label>
  
                <div class="check">
                    <input type="checkbox" name="rec" id="rec">
                    <label for="rec">Recordar el color</label>
+                   <a class="link-a" href="/logout">
+                       <button class="button-form" type="button">Olvidar el color</button>
+                   </a>
                </div>
            
-               <button type="submit">Enviar</button>
+               <button class="button-form" type="submit">Enviar</button>
            </form>
       </div>
   </main>

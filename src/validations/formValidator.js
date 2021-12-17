@@ -18,12 +18,12 @@ module.exports = [
     check('edad')
     .custom((value,{req}) => {
         if (value != "") {
-            if (value >= 18 && value <= 99) {
+            if (value >= 1 && value <= 99) {
                 return true;
             } else {
                 return false;
             }
         }
         return true;
-    }).withMessage('Escriba un número entre 18 y 99')
+    }).withMessage('Escriba un número')
 ]

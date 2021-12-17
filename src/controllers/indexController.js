@@ -3,7 +3,7 @@ const {validationResult} = require('express-validator');
 module.exports = {
 	home: (req,res) => {
 		return res.render('index',{
-			colorForm: `style=background-color:${req.cookies.legendSecret ? req.cookies.legendSecret.colorForm : ""}`
+			colorForm: `style=background-color:${req.cookies.colorFondo ? req.cookies.colorFondo : ""}`
 		});
 	},
 	syc: (req,res) => {
@@ -39,6 +39,7 @@ module.exports = {
 
 			if (req.body.rec) {
 				res.cookie('legendSecret', req.session.userLogin, {maxAge:1000 * 60 * 10})
+				res.cookie('colorFondo', colorForm, {maxAge:1000 * 60 * 10})
 			}
 
 			res.send(`
@@ -66,7 +67,7 @@ module.exports = {
 			//res.redirect('/');
 		} else{
 			return res.render('index', {
-				colorForm: `style=background-color:${req.cookies.legendSecret ? req.cookies.legendSecret.colorForm : ""}`,
+				colorForm: `style=background-color:${req.cookies.colorFondo ? req.cookies.colorFondo : ""}`,
 				errores: errors.mapped(),
 				old: req.body
 			})
@@ -81,6 +82,7 @@ module.exports = {
 	logout: (req,res) => {
 		req.session.destroy();
         res.cookie('legendSecret',null,{maxAge: -1});
+		res.cookie('colorFondo',null,{maxAge: -1});
         res.redirect('/');
 	}
 }
